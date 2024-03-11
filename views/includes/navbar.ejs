@@ -1,0 +1,195 @@
+<style>
+  .btn-search {
+    background-color: #fe424d;
+    color: #fff;
+    border-radius: 25px;
+    padding: 0 1rem 0 1rem;
+  }
+  .btn-search:hover {
+    background-color: #fe424d;
+    color: #fff;
+  }
+  .btn-search .fa-solid {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+  .search-input {
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+  }
+  .container-fluid img {
+    height: 100px;
+    width: 100px;
+  }
+
+  /* new */
+  .navbar-nav a b {
+    font-weight: bold;
+  }
+  .navbar {
+    padding: 0px 10px;
+  }
+  .navbar img {
+    height: 30px;
+    width: 120px;
+  }
+  .user {
+    height: 40px;
+    width: 80px;
+    border: 1px solid rgb(174, 174, 174);
+    border-radius: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: 3s;
+  }
+
+  .user div i {
+    font-size: 20px;
+    margin: 0px 6px;
+  }
+  .user:hover {
+    cursor: pointer;
+    box-shadow: 0px 2px rgba(113, 112, 112, 0.959);
+  }
+
+  .profile-box {
+    height: 220px;
+    width: 250px;
+    border: 1px solid rgb(174, 174, 174);
+    border-radius: 10px;
+    background-color: #fff;
+    position: absolute;
+    top: 65px;
+    right: 20px;
+    padding: 10px 40px;
+    line-height: 2;
+    box-shadow: 2px 2px 5px rgba(113, 112, 112, 0.959);
+  }
+  .profile-box a {
+    opacity: 0.7;
+  }
+  .profile-box a:hover {
+    opacity: 1;
+  }
+  .profile-box .profile {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+  }
+  .profile-box .logOut {
+    color: black;
+    font-weight: bold;
+  }
+  .globe:hover {
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgba(193, 193, 193, 0.553);
+  }
+</style>
+<body>
+  <nav class="navbar navbar-expand-md bg-body-light sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/listings">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Airbnb_Logo_B%C3%A9lo.svg/768px-Airbnb_Logo_B%C3%A9lo.svg.png"
+          alt=""
+        />
+      </a>
+
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavAltMarkup"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <!-- <a class="nav-link" href="/listings"><b>airbnb</b></a> -->
+        </div>
+
+        <div class="navbar-nav ms-auto">
+          <form class="d-flex" role="search">
+            <input
+              class="form-control me-2 search-input"
+              type="search"
+              placeholder="Search destination"
+            />
+            <button class="btn btn-search" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>Search
+            </button>
+          </form>
+        </div>
+
+        <div class="navbar-nav ms-auto">
+          <a class="nav-link" href="/listings/new"
+            ><b class="create-airbnb">Airbnb Your Home</b></a
+          >
+          <div class="globe">
+            <i class="fa-solid fa-globe" style="margin: 12px"></i>
+          </div>
+          <!-- <% if(!currUser){ %>
+          <a class="nav-link" href="/signup">
+            <b>Sign up</b> <i class="fa-solid fa-user-plus"></i
+          ></a>
+          <a class="nav-link" href="/login"
+            ><b>Log In </b
+            ><i class="fa-solid fa-right-to-bracket fa-rotate-180"></i>
+          </a>
+          <% }%><% if(currUser){ %>
+          <a class="nav-link" href="/logout "
+            >Log Out <i class="fa-solid fa-arrow-right-from-bracket"></i
+          ></a>
+
+          <% }%> -->
+          <div class="user">
+            <div>
+              <i class="fa-solid fa-bars"></i>
+              <i class="fa-solid fa-user"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- user info box -->
+        <div class="profile-box" style="display: none">
+          <a href="/profile" class="profile nav-link">Profile</a>
+          <a class="nav-link" href="/listings/new"
+            ><b class="create-airbnb">Airbnb Your Home</b></a
+          >
+          <hr />
+          <% if(!currUser){ %>
+          <a class="nav-link" href="/login"
+            ><b>Log In </b
+            ><i class="fa-solid fa-right-to-bracket fa-rotate-180"></i>
+          </a>
+          <a class="nav-link" href="/signup">
+            <b>Sign up</b> <i class="fa-solid fa-user-plus"></i
+          ></a>
+          <% }%> <% if(currUser){ %>
+          <a class="nav-link logOut" href="/logout "
+            >Log Out <i class="fa-solid fa-arrow-right-from-bracket"></i
+          ></a>
+          <% }%>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <!-- <div class="secound-search border-bottom">
+    <h1>dvcnvn,mdc ,m</h1>
+  </div> -->
+
+  <script>
+    let profileBox = document.querySelector(".profile-box");
+    let user = document.querySelector(".user");
+
+    user.addEventListener("click", () => {
+      if (profileBox.style.display != "block") {
+        profileBox.style.display = "block";
+      } else {
+        profileBox.style.display = "none";
+      }
+    });
+  </script>
+</body>

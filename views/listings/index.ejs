@@ -1,0 +1,365 @@
+<% layout('./layouts/boilerplate.ejs') -%>
+
+<style>
+  #filters {
+    margin-top: 1rem;
+    display: flex;
+    position: relative;
+    align-items: center;
+    overflow-x: scroll;
+    width: 69%;
+  }
+  #filters #backbtn,
+  #filters #nextbtn {
+    font-size: 1.5rem;
+    position: absolute;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0px 10px;
+  }
+  #filters #backbtn {
+    right: 0;
+  }
+  #filters #nextbtn {
+    left: 0;
+  }
+  #filters::-webkit-scrollbar {
+    display: none;
+  }
+  .filter {
+    text-align: center;
+    margin-right: 2rem;
+    /* margin-top: 1.1rem; */
+    opacity: 0.7;
+  }
+  /* .previous-btn i {
+    position: absolute;
+    left: 7rem;
+    top: 6.7rem;
+    font-size: 2rem;
+    z-index: 10;
+    opacity: 0.7;
+    cursor: pointer;
+  }
+  .next-btn i {
+    position: absolute;
+    right: 34%;
+    top: 6.7rem;
+    z-index: 9;
+    font-size: 2rem;
+    cursor: pointer; */
+
+  .filter:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  .filter p {
+    font-size: 0.9rem;
+  }
+  .tax-info {
+    display: none;
+  }
+  .form-check-input:hover {
+    cursor: pointer;
+  }
+  .tax-toggle {
+    border: 1px solid rgb(153, 151, 151);
+    border-radius: 1rem;
+    height: 2.8rem;
+    padding: 10px;
+    margin-left: 2rem;
+    display: flex;
+    align-items: center;
+  }
+
+  /* show more button */
+  .show-more {
+    display: flex;
+    justify-content: center;
+  }
+
+  .show-more span {
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem 0px 2rem 0px;
+  }
+  .row {
+    overflow-x: hidden !important;
+  }
+  .row a:hover img {
+    transform: scale(1.02);
+  }
+  .filter-box {
+    border: 1px solid rgb(153, 153, 153);
+    border-radius: 1rem;
+    height: 2.8rem;
+    width: 100px;
+    padding: 10px;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .filter-box :hover {
+    cursor: pointer;
+  }
+  .filter-box img {
+    height: 30px;
+    width: 50px;
+  }
+
+  .filter-box-item {
+    height: 80vh;
+    width: 50vw;
+    background-color: rgb(245, 248, 248);
+    border: 1px solid rgb(153, 153, 153);
+    border-radius: 2rem;
+    z-index: 10;
+    position: fixed;
+    top: 14%;
+    left: 22%;
+    overflow: hidden;
+  }
+  .filter-box-item .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0rem;
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid rgb(153, 153, 153);
+  }
+  .main {
+    padding: 0rem 1rem;
+    height: 100vh;
+    background-color: #f4f4f4;
+    overflow: hidden;
+  }
+  .place-type {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+  }
+  .place-type button {
+    width: 15rem;
+    padding: 1rem 1rem;
+    font-weight: bold;
+    border-right: 1px solid black;
+    display: flex;
+    justify-content: center;
+  }
+  .main-filter-box {
+    display: flex;
+
+    align-items: center;
+  }
+  .content {
+    border: 2px solid rgb(88, 88, 88);
+    box-shadow: 2px 1px 10px black;
+    z-index: 10;
+    overflow: hidden;
+  }
+  #backbtn {
+    margin: 5px;
+  }
+</style>
+
+<div class="main-filter-box mb-1">
+  <div id="filters">
+    <div id="backbtn">
+      <span> <i class="fa-solid fa-angle-right"></i></span>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-fire"></i></div>
+      <p>Trending</p>
+    </div>
+
+    <div class="filter">
+      <div><i class="fa-solid fa-bed"></i></div>
+      <p>Rooms</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-umbrella-beach"></i></div>
+      <p>Beach</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-water"></i></div>
+      <p>Lake</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-person-swimming"></i></div>
+      <p>Amazing Pools</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-city"></i></div>
+      <p>Iconic Cities</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-campground"></i></div>
+      <p>Camping</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-cow"></i></div>
+      <p>Farms</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-brands fa-fort-awesome"></i></div>
+      <p>Castles</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-sailboat"></i></div>
+      <p>Boats</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-brands fa-fort-awesome"></i></div>
+      <p>Castles</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-brands fa-fort-awesome"></i></div>
+      <p>Castles</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-sailboat"></i></div>
+      <p>Boats</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-brands fa-fort-awesome"></i></div>
+      <p>Castles</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-sailboat"></i></div>
+      <p>Boats</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-futbol"></i></div>
+      <p>Play</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-sailboat"></i></div>
+      <p>Caves</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-igloo"></i></div>
+      <p>Domes</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-tower-observation"></i></div>
+      <p>Tower</p>
+    </div>
+    <div class="filter">
+      <div><i class="fa-solid fa-snowflake"></i></div>
+      <p>Artic</p>
+    </div>
+
+    <!-- <div class="filter-box-item" style="display: none">
+      <div class="title"><h6>Filters</h6></div>
+      <div class="main">
+        <hr />
+        <div class="first">
+          <h4>Type of place</h4>
+          <p>Search rooms, entire homes or any type of place</p>
+          <div class="place-type">
+            <button
+              style="
+                border-top-left-radius: 10px;
+                border-bottom-left-radius: 10px;
+              "
+            >
+              Any type
+            </button>
+            <button>Room</button>
+            <button
+              style="
+                border-top-right-radius: 10px;
+                border-bottom-right-radius: 10px;
+              "
+            >
+              Entire home
+            </button>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div id="nextbtn">
+      <span> <i class="fa-solid fa-angle-left"></i></span>
+    </div>
+  </div>
+
+  <div class="filter-box">
+    <img
+      src="https://static.vecteezy.com/system/resources/thumbnails/008/014/204/small/filter-control-adjustment-icon-on-white-background-free-vector.jpg"
+      alt=""
+    />
+    <span><b>Filters</b></span>
+  </div>
+
+  <div class="tax-toggle">
+    <div class="form-check-reverse form-switch">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        role="switch"
+        id="flexSwitchCheckDefault"
+      />
+      <label class="form-check-label" for="flexSwitchCheckDefault"
+        ><b>Display Total After Taxes</b></label
+      >
+    </div>
+  </div>
+</div>
+
+<div class="row row-cols-lg-4 row-cols-md-2 row-cols-sm-1 mt-4 pt-2">
+  <% for( let listing of allListings ) { %>
+  <a href="/listings/<%= listing._id %> " class="listing-link">
+    <div class="card col listing-card">
+      <img
+        src="<%= listing.image.url%>"
+        id="hover-effect"
+        class="card-img-top content"
+        alt="listing_image"
+        style="height: 20rem"
+      />
+
+      <div class="card-img-overlay">
+        <i class="fa-solid fa-heart"></i>
+      </div>
+      <div class="card-body">
+        <p class="card-text pl-3">
+          <b><%= listing.title %> </b> <br />
+          <i><%= listing.location %> ,</i>
+          <i> <%= listing.country %></i> <br />
+          &#8377;<%=listing.price.toLocaleString("en-IN");%> /night
+          <i class="tax-info"> &nbsp; &nbsp;<b>+18% GST</b></i>
+        </p>
+      </div>
+    </div>
+    <% } %>
+  </a>
+</div>
+
+<div class="show-more">
+  <div class="show-more-content">
+    <h5>Continue exploring Islands</h5>
+    <span> <button class="btn btn-dark">Show more</button></span>
+  </div>
+</div>
+
+<script>
+  let taxSwitch = document.getElementById("flexSwitchCheckDefault");
+  taxSwitch.addEventListener("click", () => {
+    let taxInfo = document.getElementsByClassName("tax-info");
+    for (info of taxInfo) {
+      if (info.style.display != "inline") {
+        info.style.display = "inline";
+      } else {
+        info.style.display = "none";
+      }
+    }
+  });
+
+  let;
+</script>
